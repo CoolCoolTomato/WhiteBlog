@@ -10,7 +10,7 @@
         "Port": "3306",
         "Database": "tomato",
         "Username": "root",
-        "Password": "msql_lqk",
+        "Password": "msql",
         "Charset": "utf8mb4"
     },
     "user": {
