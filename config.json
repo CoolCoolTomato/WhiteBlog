@@ -1,0 +1,31 @@
+{
+    "authConfig": {
+        "Username": "admin",
+        "Password": "123456",
+        "Enable2FA": false
+    },
+    "databaseConfig": {
+        "Driver": "mysql",
+        "Host": "127.0.0.1",
+        "Port": "3306",
+        "Database": "tomato",
+        "Username": "root",
+        "Password": "msql_lqk",
+        "Charset": "utf8mb4"
+    },
+    "user": {
+        "Username": "酷酷番茄",
+        "Gravatar": "/",
+        "Url": "coolcooltomato.com",
+        "Description": "(⊙o⊙)？"
+    },
+    "site": {
+        "Path": "http://localhost:7891/",
+        "Title": "这里是酷酷番茄的博客",
+        "Icon": "https://leafbackaut.cn/file/tomato.ico",
+        "Bili": "https://space.bilibili.com/176944918",
+        "Github": "https://github.com/CoolCoolTomato",
+        "Twitter": "/",
+        "Mail": "coolcooltomato@gmail.com"
+    }
+}
