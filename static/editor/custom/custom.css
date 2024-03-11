@@ -1,0 +1,36 @@
+.markdown-body{
+    color: #606060;
+}
+.editormd-preview-container pre.prettyprint, .editormd-html-preview pre.prettyprint{
+    border: none;
+    box-shadow: 0 0 0.5rem #CCCCCC;
+    background-color: white;
+    border-radius: 0.5rem;
+}
+.linenums li{
+    background: none;
+}
+.editormd-preview-container, .editormd-html-preview{
+    padding: 0;
+    overflow: unset;
+}
+.markdown-body table{
+    width: 100%;
+    display: table;
+    border: none;
+    box-shadow: 0 0 0.5rem #CCCCCC;
+    color: #606060;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+.markdown-body table th, .markdown-body table td, .markdown-body table tr{
+    border: none;
+    text-align: left;
+    background-color: white;
+}
+.markdown-body img{
+    box-shadow: 0 0 0.5rem #CCCCCC;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}

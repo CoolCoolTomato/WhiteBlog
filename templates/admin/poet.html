@@ -1,0 +1,84 @@
+{{ define "admin/poet.html" }}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{{.config.Site.Icon}}">
+    <link rel="stylesheet" href="/static/admin/poet/css/poet.css">
+    <script type="application/javascript" src="/static/admin/poet/js/poet.js"></script>
+    <title>内容管理</title>
+</head>
+<body>
+<div id="app">
+    <div id="poet">
+        <div id="poet_tool">
+            <button onclick="showAddForm()"><b>新增</b></button>
+            <button onclick="showUpdateForm()"><b>编辑</b></button>
+            <button onclick="deletePoet()"><b>删除</b></button>
+            <b><span id="poet_tip">{{.tip}}</span></b>
+        </div>
+        <div id="poet_table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>内容</th>
+                        <th>来源</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{range $key,$value := .poets }}
+                    <tr>
+                        <td>
+                            <input type="radio" name="poetId" id="r{{ $value.ID }}" value="{{ $value.ID }}">
+                            <label for="r{{ $value.ID }}">{{ $value.ID }}</label>
+                            <span>{{ $value.Content }}</span>
+                        </td>
+                        <td>{{ $value.Source }}</td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="page_title">
+        <h2>内容管理</h2>
+    </div>
+    <div id="poet_add_form">
+        <div id="form_add_warp">
+            <h2>新增内容</h2>
+            <form action="/admin/poet/add" method="post" id="poet_add">
+                <label>
+                    <b>内容</b>
+                    <input type="text" name="content" autocomplete="off">
+                </label>
+                <label>
+                    <b>来源</b>
+                    <input type="text" name="source" autocomplete="off">
+                </label>
+                <button type="button" onclick="addPoet()">提交</button>
+                <button type="button" onclick="hideAddForm()">关闭</button>
+            </form>
+        </div>
+    </div>
+    <div id="poet_update_form">
+        <div id="form_update_warp">
+            <h2>更新内容</h2>
+            <form action="/admin/poet/update" method="post" id="poet_update">
+                <input type="hidden" name="pid">
+                <label>
+                    <b>内容</b>
+                    <input type="text" name="content" autocomplete="off">
+                </label>
+                <label>
+                    <b>来源</b>
+                    <input type="text" name="source" autocomplete="off">
+                </label>
+                <button type="button" onclick="updatePoet()">提交</button>
+                <button type="button" onclick="hideUpdateForm()">关闭</button>
+            </form>
+        </div>
+    </div>
+</div>
+{{template "admin/base.html" .}}
+</body>
+</html>
+{{ end }}

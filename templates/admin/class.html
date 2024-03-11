@@ -1,0 +1,56 @@
+{{ define "admin/class.html" }}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{{.config.Site.Icon}}">
+    <link rel="stylesheet" href="/static/admin/class/css/class.css">
+    <script type="application/javascript" src="/static/admin/class/js/class.js"></script>
+    <title>分类管理</title>
+</head>
+<body>
+<div id="app">
+    <div id="class">
+        <div id="class_tool">
+            <button onclick="link('/admin/class/add')"><b>新增</b></button>
+            <button onclick="deleteClass()"><b>删除</b></button>
+            <b><span id="class_tip">{{.tip}}</span></b>
+        </div>
+        <div id="class_table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>分类名称</th>
+                        <th>父级分类</th>
+                        <th>子分类数</th>
+                        <th>文章数</th>
+                        <th>创建时间</th>
+                        <th>修改时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{range $key,$value := .classes }}
+                    <tr>
+                        <td>
+                            <input type="radio" name="classId" id="r{{ $value.ID }}" value="{{ $value.ID }}">
+                            <label for="r{{ $value.ID }}">{{ $value.ID }}</label>
+                            <a href="/admin/class/edit?id={{$value.ID}}">{{ $value.Name }}</a>
+                        </td>
+                        <td>{{ $value.Parent }}</td>
+                        <td>{{ $value.SubclassNum }}</td>
+                        <td>{{ $value.ArticleNum }}</td>
+                        <td>{{ $value.CreatedDate | formatDate }}</td>
+                        <td>{{ $value.UpdatedDate | formatDate }}</td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="page_title">
+        <h2>分类管理</h2>
+    </div>
+</div>
+{{template "admin/base.html" .}}
+</body>
+</html>
+{{ end }}

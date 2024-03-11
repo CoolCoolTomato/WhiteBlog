@@ -1,0 +1,154 @@
+{{ define "admin/index.html" }}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{{.config.Site.Icon}}">
+    <link rel="stylesheet" href="/static/admin/index/css/index.css">
+    <script type="application/javascript" src="/static/admin/index/js/echarts.min.js"></script>
+    <script type="application/javascript" src="/static/admin/index/js/typed.umd.js"></script>
+    <script type="application/javascript" src="/static/admin/index/js/index.js"></script>
+    <title>后台管理</title>
+</head>
+<body>
+<div id="app">
+    <div id="index">
+        <div id="welcome">
+            <h2>欢迎回来-{{.title}}</h2>
+        </div>
+        <div id="card">
+            <span>文章总数 <b>{{.articleNum}}</b> 篇 | 分类总数 <b>{{.classNum}}</b> 个</span>
+        </div>
+        <div id="class">
+            <div id="classChart"></div>
+        </div>
+        <div id="article">
+            <div id="articleChart"></div>
+        </div>
+        <div id="poet">
+            <div>
+                <span id="typeSpan"></span>
+                <script>
+                    var typed = new Typed('#typeSpan', {
+                        strings: [
+                            {{range $key,$value := .poets }}
+                            '{{ $value.Content }}',
+                            {{ end }}
+                        ],
+                        typeSpeed: 100,
+                        backSpeed: 50,
+                        loop: true,
+                        backDelay: 3000,
+                        shuffle: true,
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+{{template "admin/base.html" .}}
+<script>
+    var classChartDom = document.getElementById('classChart');
+    var classChart = echarts.init(classChartDom);
+    var classOption;
+    classOption = {
+        title: {
+            text: '分类统计',
+        },
+        tooltip: {
+            trigger: 'item'
+        },
+        legend: {
+            bottom: '0',
+            left: 'center'
+        },
+        series: [
+            {
+                name: '分类统计',
+                type: 'pie',
+                radius: ['40%', '70%'],
+                avoidLabelOverlap: false,
+                itemStyle: {
+                    borderRadius: 10,
+                    borderColor: '#fff',
+                    borderWidth: 2
+                },
+                label: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    label: {
+                        show: true,
+                        fontSize: 40,
+                        fontWeight: 'bold'
+                    }
+                },
+                labelLine: {
+                    show: false
+                },
+                data: [
+                    {{range $key,$value := .rootClass}}
+                    { value: {{ $value.ArticleNum }}, name: {{$value.Name}} },
+                    {{end}}
+                ]
+            }
+        ]
+    };
+    classOption && classChart.setOption(classOption);
+</script>
+<script>
+    var articleChartDom = document.getElementById('articleChart');
+    var articleChart = echarts.init(articleChartDom);
+    var articleOption;
+    articleOption = {
+        title: {
+            text: '文章统计',
+        },
+        xAxis: {
+            type: 'category',
+            data: [
+                {{range $key,$value := .articleCountMap}}
+                {
+                    value: {{$value.Month}},
+                },
+                {{end}}
+            ]
+        },
+        yAxis: {
+            type: 'value',
+            minInterval: 1,
+        },
+        series: [
+            {
+                data: [
+                    {{range $key,$value := .articleCountMap}}
+                    {
+                        value: {{$value.Count}},
+                        itemStyle: {
+                            color: getRandomBrightColor(),
+                        }
+                    },
+                    {{end}}
+                ],
+                type: 'bar'
+            }
+        ]
+    };
+    articleOption && articleChart.setOption(articleOption);
+</script>
+<script>
+    // 编辑器自适应
+    const theChart = document.querySelector('#classChart');
+    let width = theChart.offsetWidth;
+    let height = theChart.offsetHeight;
+    new ResizeObserver(() => {
+        if (width !== theChart.offsetWidth || height !== theChart.offsetHeight) {
+            width = theChart.offsetWidth;
+            classChart.resize();
+            articleChart.resize();
+        }
+    }).observe(theChart);
+</script>
+</body>
+</html>
+{{ end }}

@@ -1,0 +1,106 @@
+{{ define "admin/articleAdd.html" }}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{{.config.Site.Icon}}">
+    <link rel="stylesheet" href="/static/admin/article/css/articleAdd.css">
+    <link rel="stylesheet" href="/static/editor/css/editormd.css">
+    <link rel="stylesheet" href="/static/editor/custom/custom.css">
+    <script type="application/javascript" src="/static/admin/article/js/articleAdd.js"></script>
+    <script type="application/javascript" src="/static/editor/js/jquery.min.js"></script>
+    <script type="application/javascript" src="/static/editor/editormd.js"></script>
+    <title>新增文章</title>
+</head>
+<body>
+<div id="app">
+    <div id="article">
+        <div id="title">
+            <label>
+                <b>文章标题</b>
+                <input type="text" id="title_input" autocomplete="off">
+            </label>
+        </div>
+        <div id="editor">
+            <textarea style="display:none;" id="content"></textarea>
+        </div>
+        <script type="application/javascript" src="/static/admin/article/js/editor.js"></script>
+    </div>
+    <div id="article_msg">
+        <div id="switch">
+            <div id="switch_bts">
+                <button onclick="showOption()"><b>选项</b></button>
+                <button onclick="showUpload()"><b>附件</b></button>
+            </div>
+        </div>
+        <div id="switch_card">
+            <div id="option">
+                <div id="article_class">
+                    <div id="choose_class">
+                        <b>选择分类</b>
+                    </div>
+                    <ul id="class_ul">
+                        {{range $key,$value := .classes }}
+                        <li class="class_li hide">
+                            <div onclick="ListClass(this.parentNode)" class="class_list">
+                                <label>
+                                    <input type="radio" value="{{$value.ID}}" name="class">
+                                </label>
+                                <b>{{$value.Name}}</b>
+                            </div>
+                            <ul>
+                                {{range $subKey,$subValue := $value.Subclasses}}
+                                <li>
+                                    <label>
+                                        <input type="radio" value="{{$subValue.ID}}" name="class">
+                                    </label>
+                                    <span>{{$subValue.Name}}</span>
+                                </li>
+                                {{end}}
+                            </ul>
+                        </li>
+                        {{ end }}
+                    </ul>
+                    <br>
+                </div>
+                <div id="article_time">
+                    <label>
+                        <b>创建时间</b>
+                        <input type="datetime-local" id="created_date">
+                    </label>
+                    <label>
+                        <b>更新时间</b>
+                        <input type="datetime-local" id="updated_date">
+                    </label>
+                </div>
+                <button id="submit" onclick="addArticle()"><b>提交</b></button>
+            </div>
+            <div id="upload">
+                <div id="file_list"></div>
+                <label for="upload_input" id="upload_input_warp">
+                    <input type="file" id="upload_input">
+                    <b>选择文件</b>
+                    <span id="upload_span"></span>
+                </label>
+                <script>
+                    let upload_input = document.getElementById('upload_input')
+                    let upload_span = document.getElementById('upload_span')
+
+                    upload_input.addEventListener('change', function (){
+                        let file = upload_input.files[0]
+                        upload_span.textContent = file.name
+                    })
+                </script>
+                <button onclick="upload()" id="upload_button">
+                    <b>上传</b>
+                </button>
+            </div>
+        </div>
+        </div>
+    <div id="page_title">
+        <h2>新增文章</h2>
+    </div>
+</div>
+{{template "admin/base.html" .}}
+</body>
+</html>
+{{ end }}

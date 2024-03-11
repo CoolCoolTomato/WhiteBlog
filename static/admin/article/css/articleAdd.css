@@ -1,0 +1,362 @@
+#article{
+    width: 65%;
+    height: 80%;
+    left: 5%;
+    top: 10%;
+    position: absolute;
+    box-shadow: 0 0 0.5rem #CCCCCC;
+    border-radius: 2rem;
+    background-color: white;
+    transition: 0.2s ease-in-out;
+}
+#title{
+    width: 100%;
+    height: 10%;
+    left: 0;
+    top: 5%;
+    position: absolute;
+}
+#title label{
+    width: 100%;
+    height: 70%;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+}
+#title b{
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative;
+    font-size: 1.5rem;
+    width: 15%;
+    display: block;
+    float: left;
+    text-align: right;
+}
+#title input{
+    width: 80%;
+    height: 100%;
+    border: none;
+    border-bottom: 0.2rem solid #303030;
+    outline: none;
+    font-size: 1.4rem;
+    float: left;
+    text-align: center;
+}
+
+#editor{
+    width: 100%;
+    height: 85%;
+    left: 0;
+    top: 15%;
+    position: absolute;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    overflow: hidden;
+    border: none;
+    background-color: white;
+}
+/**/
+#article_msg{
+    width: 20%;
+    height: 80%;
+    left: 75%;
+    top: 10%;
+    position: absolute;
+    box-shadow: 0 0 0.5rem #CCCCCC;
+    border-radius: 2rem;
+    overflow: hidden;
+}
+#switch{
+    width: 100%;
+    height: 10%;
+    position: relative;
+}
+#switch_bts{
+    width: 90%;
+    height: 50%;
+    left: 5%;
+    top: 50%;
+    position: relative;
+    border-bottom: 0.2rem solid #303030;
+}
+#switch_bts button{
+    width: 50%;
+    border: none;
+    font-size: 1rem;
+    height: 100%;
+    float: left;
+    background: none;
+    cursor: pointer;
+    position: relative;
+    bottom: 0;
+    transition: 0.2s ease-in-out;
+}
+#switch_bts button:hover{
+    bottom: 0.3rem;
+}
+#switch_card{
+    width: 200%;
+    height: 90%;
+    left: 0;
+    top: 0;
+    position: relative;
+    transition: 0.2s ease-in-out;
+}
+/**/
+#option{
+    width: 50%;
+    height: 100%;
+    position: relative;
+    float: left;
+}
+#article_class{
+    width: 90%;
+    min-height: 40%;
+    max-height: 70%;
+    left: 5%;
+    position: relative;
+    border-bottom: 0.2rem solid #303030;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+#choose_class{
+    width: 100%;
+    height: 2rem;
+    position: relative;
+}
+#choose_class b{
+    font-size: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+}
+#class_ul {
+    width: 100%;
+    min-height: 10rem;
+    max-height: 20rem;
+    position: relative;
+    margin: 0;
+    list-style-type: none;
+    padding: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.class_li{
+    position: relative;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    width: 95%;
+    font-size: 1.1rem;
+}
+.class_li b, .class_li label{
+    margin: 0.3rem;
+}
+.class_li label input{
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    border: 0.2rem solid #303030;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+.class_li label input:checked{
+    background-color: #303030;
+    border: 0.2rem solid #FFFFFF;
+}
+.class_list {
+    width: 100%;
+    position: relative;
+    height: auto;
+    padding: 0.2rem;
+    transition: 0.2s ease-in-out;
+    display: flex;
+    border-radius: 0.5rem;
+}
+.class_list:hover{
+    background-color: #F0F0F0;
+}
+.class_li ul {
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    overflow: hidden;
+    transition: 0.2s ease-in-out;
+    height: 0;
+}
+.class_li ul li{
+    padding: 0.2rem;
+    height: auto;
+    position: relative;
+    font-size: 1rem;
+    display: flex;
+    transition: 0.2s ease-in-out;
+    border-radius: 0.5rem;
+}
+.class_li ul li:hover{
+    background-color: #F0F0F0;
+}
+.class_li ul li label{
+    text-indent: 1rem;
+    margin: 0;
+}
+.class_li ul li span{
+    margin: 0.2rem;
+}
+/**/
+#article_time{
+    width: 90%;
+    height: 15%;
+    left: 5%;
+    position: relative;
+}
+
+#article_time label{
+    width: 100%;
+    height: 1.5rem;
+    display: block;
+    padding-top: 1rem;
+}
+#article_time b{
+    font-size: 1.1rem;
+    width: 34%;
+    display: inline-block;
+    float: left;
+}
+#article_time input{
+    font-size: 1rem;
+    width: 65%;
+    float: left;
+}
+#submit{
+    font-size: 1rem;
+    width: 90%;
+    height: 2rem;
+    left: 5%;
+    position: relative;
+    background: none;
+    border: 0.2rem solid #303030;
+    cursor: pointer;
+}
+/**/
+#upload{
+    width: 50%;
+    height: 100%;
+    position: relative;
+    float: left;
+}
+#file_list{
+    width: 90%;
+    max-height: 80%;
+    left: 5%;
+    position: relative;
+    margin-top: 1rem;
+    overflow-y: scroll;
+}
+.file{
+    width: 100%;
+    height: 2rem;
+    position: relative;
+}
+.file a{
+    font-size: 1rem;
+    width: 80%;
+    left: 0;
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline;
+    white-space: nowrap;
+    text-decoration: none;
+    color: #303030;
+    cursor: pointer;
+}
+.file button{
+    font-size: 1rem;
+    width: 20%;
+    height: 100%;
+    left: 80%;
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+#upload_input_warp{
+    margin-top: 1rem;
+    width: 90%;
+    height: 2rem;
+    display: block;
+    left: 5%;
+    position: relative;
+}
+#upload_input_warp b{
+    width: 30%;
+    float: left;
+    cursor: pointer;
+    position: relative;
+    transition: 0.2s ease-in-out;
+}
+#upload_input_warp b:hover{
+    color: violet;
+}
+#upload_input{
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+#upload_span{
+    width: 70%;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    float: left;
+}
+#upload_button{
+    width: 90%;
+    left: 5%;
+    position: relative;
+    height: 2rem;
+    font-size: 1rem;
+    background: none;
+    cursor: pointer;
+    border: 0.2rem solid #303030;
+}
+/**/
+#page_title{
+    border-radius: 1rem;
+    left: 3%;
+    top: 5%;
+    position: absolute;
+    box-shadow: 0 0 0.5rem #CCCCCC;
+    text-align: center;
+    background-color: white;
+}
+#page_title h2{
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+/*滚动条*/
+#class_ul::-webkit-scrollbar, #file_list::-webkit-scrollbar{
+    width: 0.5rem;
+    background-color: white;
+}
+#class_ul::-webkit-scrollbar-thumb, #file_list::-webkit-scrollbar-thumb{
+    background-color: #F0F0F0;
+}
+/*全屏*/
+#app .full{
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 12;
+    border-radius: 0;
+}

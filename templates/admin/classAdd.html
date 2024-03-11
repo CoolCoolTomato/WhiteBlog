@@ -1,0 +1,113 @@
+{{ define "admin/classAdd.html" }}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{{.config.Site.Icon}}">
+    <link rel="stylesheet" href="/static/admin/class/css/classAdd.css">
+    <script type="application/javascript" src="/static/admin/class/js/classAdd.js"></script>
+    <title>添加分类</title>
+</head>
+<body>
+<div id="app">
+    <div id="class">
+        <div id="class_tool">
+            <button type="button" onclick="addClass()"><b>提交</b></button>
+            {{if ne .class.ID 0}}
+            <button onclick="link('/admin/class/edit?id={{.class.ID}}')"><b>编辑</b></button>
+            <button onclick="link('/admin/class/add')"><b>新增其它</b></button>
+            {{end}}
+            <button onclick="history.back()"><b>返回</b></button>
+            <b><span id="class_tip"></span></b>
+        </div>
+        <div id="class_form">
+            <form action="/admin/class/add" method="post" id="class_add">
+                <label>
+                    <b>分类名称</b>
+                    <input type="text" name="cname" autocomplete="off">
+                </label>
+                <label>
+                    <b>父级分类</b>
+                    <select name="belong">
+                        {{if eq .class.ID 0}}
+                            <option value="-1">无</option>
+                            {{range $key,$value := .classes }}
+                            <option value="{{ $value.ID }}">{{ $value.Name }}</option>
+                            {{end}}
+                        {{else}}
+                            <option value="{{ .class.ID }}">{{ .class.Name }}</option>
+                        {{end}}
+                    </select>
+                </label>
+                <label>
+                    <b>创建时间</b>
+                    <input type="datetime-local" name="created_date">
+                </label>
+                <label>
+                    <b>更新时间</b>
+                    <input type="datetime-local" name="updated_date">
+                </label>
+            </form>
+        </div>
+        <div id="class_table">
+            {{if eq .class.ID 0}}
+                <table>
+                <thead>
+                <tr>
+                    <th>一级分类</th>
+                    <th>父级分类</th>
+                    <th>创建时间</th>
+                    <th>修改时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{range $key,$value := .classes}}
+                <tr>
+                    <td>
+                        <a href="/admin/class/edit?id={{ $value.ID }}">{{ $value.Name }}</a>
+                    </td>
+                    <td>无</td>
+                    <td>{{ $value.CreatedDate | formatDate }}</td>
+                    <td>{{ $value.UpdatedDate | formatDate }}</td>
+                </tr>
+                {{end}}
+                </tbody>
+            </table>
+            {{else}}
+            <table>
+                <thead>
+                <tr>
+                    <th>子分类名称</th>
+                    <th>父级分类</th>
+                    <th>创建时间</th>
+                    <th>修改时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{$class := .class}}
+                {{range $key,$value := .subclasses}}
+                <tr>
+                    <td>
+                        <a href="/admin/class/edit?id={{ $value.ID }}">{{ $value.Name }}</a>
+                    </td>
+                    <td>{{ $class.Name }}</td>
+                    <td>{{ $value.CreatedDate | formatDate }}</td>
+                    <td>{{ $value.UpdatedDate | formatDate }}</td>
+                </tr>
+                {{end}}
+                </tbody>
+            </table>
+            {{end}}
+        </div>
+    </div>
+    <div id="page_title">
+        {{if ne .class.ID 0}}
+            <h2>新增子分类-{{.class.Name}}</h2>
+        {{else}}
+            <h2>新增分类</h2>
+        {{end}}
+    </div>
+</div>
+{{template "admin/base.html" .}}
+</body>
+</html>
+{{ end }}

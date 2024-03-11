@@ -1,0 +1,164 @@
+#class{
+    width: 90%;
+    height: 80%;
+    left: 5%;
+    top: 10%;
+    position: absolute;
+    box-shadow: 0 0 0.5rem #CCCCCC;
+    border-radius: 2rem;
+}
+/**/
+#class_tool{
+    width: 92%;
+    height: 3rem;
+    left: 4%;
+    top: 7%;
+    position: relative;
+    border-bottom: solid 0.2rem #808080;
+}
+#class_tool button{
+    height: 100%;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    position: relative;
+    bottom: 0;
+    transition: 0.2s ease-in-out;
+}
+#class_tool button:hover{
+    bottom: 0.3rem;
+}
+#class_tool button b{
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+#class_tool span{
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+}
+/**/
+#class_form{
+    left: 5%;
+    top: 7%;
+    position: relative;
+    width: 30%;
+    height: 80%;
+    float: left;
+}
+#class form{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+#class form label{
+    display: block;
+    height: 2rem;
+    position: relative;
+    margin-top: 1rem;
+    width: 90%;
+}
+#class_form label b{
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+    width: 20%;
+    display: inline-block;
+    float: left;
+}
+#class form label select{
+    height: 100%;
+    width: 75%;
+    font-size: 1rem;
+    border: solid 0.1rem #303030;
+    margin-left: 4%;
+    float: left;
+    outline: none;
+    cursor: pointer;
+}
+#class form label input{
+    height: 100%;
+    width: 75%;
+    font-size: 1rem;
+    border: solid 0.1rem #303030;
+    margin-left: 4%;
+    float: left;
+    outline: none;
+}
+/**/
+#class_table{
+    top: 7%;
+    left: 5%;
+    width: 60%;
+    height: 80%;
+    position: relative;
+    font-size: 1rem;
+    text-align: left;
+    float: left;
+    overflow-y: scroll;
+}
+#class_table table{
+    width: 100%;
+    position: relative;
+    text-align: left;
+    font-size: 1rem;
+    border-collapse: collapse;
+}
+#class_table table th{
+    padding: 1rem;
+    background-color: #F0F0F0;
+}
+#class_table table tr{
+}
+#class_table table td{
+    padding: 1rem;
+}
+#class_table table td label{
+    display: none;
+}
+#class_table table td input{
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    border: 0.2rem solid #303030;
+    top: 0.2rem;
+    position: relative;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+#class_table table td input:checked{
+    background-color: #303030;
+    border: 0.2rem solid #FFFFFF;
+}
+#class_table table td a{
+    text-decoration: none;
+    color: #303030;
+    transition: 0.2s ease-in-out;
+}
+#class_table table td a:hover{
+    color: violet;
+}
+/**/
+#page_title{
+    border-radius: 1rem;
+    left: 3%;
+    top: 5%;
+    position: absolute;
+    box-shadow: 0 0 0.5rem #CCCCCC;
+    text-align: center;
+    background-color: white;
+}
+#page_title h2{
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+/*滚动条*/
+#class_table::-webkit-scrollbar{
+    width: 0.5rem;
+    background-color: white;
+}
+#class_table::-webkit-scrollbar-thumb{
+    background-color: #F0F0F0;
+}

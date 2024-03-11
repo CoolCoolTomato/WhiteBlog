@@ -1,0 +1,94 @@
+{{ define "admin/classEdit.html" }}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{{.config.Site.Icon}}">
+    <link rel="stylesheet" href="/static/admin/class/css/classEdit.css">
+    <script type="application/javascript" src="/static/admin/class/js/classEdit.js"></script>
+    <script type="application/javascript" src="/static/admin/class/js/class.js"></script>
+    <title>编辑分类</title>
+</head>
+<body>
+<div id="app">
+    <div id="class">
+        <div id="class_tool">
+            <button type="button" onclick="editClass()"><b>提交</b></button>
+            <button onclick="link('/admin/class/add?id={{.class.ID}}')"><b>新增</b></button>
+            <button onclick="deleteClass()"><b>删除</b></button>
+            {{if ne .class.Belong -1}}
+            <button onclick="link('/admin/class/edit?id={{.class.Belong}}')"><b>父级分类</b></button>
+            {{end}}
+            <button onclick="history.back()"><b>返回</b></button>
+            <b><span id="class_tip"></span></b>
+        </div>
+        <div  id="class_form">
+            <form action="/admin/class/add" method="post" id="class_edit">
+                <label>
+                    <b>分类名称</b>
+                    <input type="hidden" name="cid" value="{{ .class.BaseModel.ID }}">
+                    <input type="text" name="cname" value="{{ .class.Name }}" autocomplete="off">
+                </label>
+                <label>
+                    <b>父级分类</b>
+                    <select name="belong">
+                        <option value="-1">无</option>
+                        {{ $belong := .class.Belong }}
+                        {{range $key,$value := .classes }}
+                            {{if eq $belong $value.ID}}
+                                <option value="{{ $value.ID }}" selected>{{ $value.Name }}</option>
+                            {{else}}
+                                <option value="{{ $value.ID }}">{{ $value.Name }}</option>
+                            {{end}}
+                        {{end}}
+                    </select>
+                </label>
+                <label>
+                    <b>创建时间</b>
+                    <input type="datetime-local" name="created_date" value="{{ .class.BaseModel.CreatedDate | formatDateTime }}">
+                </label>
+                <label>
+                    <b>更新时间</b>
+                    <input type="datetime-local" name="updated_date" value="{{ .class.BaseModel.UpdatedDate | formatDateTime }}">
+                </label>
+            </form>
+        </div>
+        <div id="class_table">
+            <table>
+                <thead>
+                <tr>
+                    <th>子分类名称</th>
+                    <th>父级分类</th>
+                    <th>创建时间</th>
+                    <th>修改时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{ $class := .class }}
+                {{range $key,$value := .subclasses}}
+                <tr>
+                    <td>
+                        <input type="radio" name="classId" id="r{{ $value.ID }}" value="{{ $value.ID }}">
+                        <label for="r{{ $value.ID }}">{{ $value.ID }}</label>
+                        <a href="/admin/class/edit?id={{ $value.ID }}">{{ $value.Name }}</a>
+                    </td>
+                    <td>{{ $class.Name }}</td>
+                    <td>{{ $value.CreatedDate | formatDate }}</td>
+                    <td>{{ $value.UpdatedDate | formatDate }}</td>
+                </tr>
+                {{end}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="page_title">
+        {{if ne .class.ID 0}}
+        <h2>编辑分类-{{.class.Name}}</h2>
+        {{else}}
+        <h2>编辑分类</h2>
+        {{end}}
+    </div>
+</div>
+{{template "admin/base.html" .}}
+</body>
+</html>
+{{ end }}

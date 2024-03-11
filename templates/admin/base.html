@@ -1,0 +1,66 @@
+{{ define "admin/base.html" }}
+<link rel="stylesheet" href="/static/admin/base/css/base.css">
+<link id="mobile_css" rel="stylesheet">
+<script type="application/javascript" src="/static/admin/base/js/base.js"></script>
+<div id="list" class="hide">
+    <div onclick="list()" id="control"></div>
+    <ul id="main_ul">
+        <li class="li hide">
+            <div class="list" onclick="subList(this.parentNode)">
+                <img src="/static/admin/base/img/home.svg" alt="首页">
+                <a onclick="link('/admin')"><b>首页</b></a>
+            </div>
+            <ul></ul>
+        </li>
+        <li class="li hide">
+            <div class="list" onclick="subList(this.parentNode)">
+                <img src="/static/admin/base/img/edit.svg" alt="编辑">
+                <a><b>编辑</b></a>
+            </div>
+            <ul>
+                <li>
+                    <img src="/static/admin/base/img/point.svg" alt="">
+                    <a onclick="link('/admin/class')">分类</a>
+                </li>
+                <li>
+                    <img src="/static/admin/base/img/point.svg" alt="">
+                    <a onclick="link('/admin/article')">文章</a>
+                </li>
+                <li>
+                    <img src="/static/admin/base/img/point.svg" alt="">
+                    <a onclick="link('/admin/poet')">诗句</a>
+                </li>
+                <li>
+                    <img src="/static/admin/base/img/point.svg" alt="">
+                    <a onclick="link('/admin/link')">友链</a>
+                </li>
+                <li>
+                    <img src="/static/admin/base/img/point.svg" alt="">
+                    <a onclick="link('/admin/file')">文件</a>
+                </li>
+            </ul>
+        </li>
+        <li class="li hide">
+            <div class="list" onclick="subList(this.parentNode)">
+                <img src="/static/admin/base/img/setting.svg" alt="编辑">
+                <a onclick="link('/admin/setting')"><b>设置</b></a>
+            </div>
+            <ul></ul>
+        </li>
+        <li class="li hide">
+            <div class="list" onclick="subList(this.parentNode)">
+                <img src="/static/admin/base/img/site.svg" alt="注销">
+                <a onclick="link('/')"><b>站点</b></a>
+            </div>
+            <ul></ul>
+        </li>
+        <li class="li hide">
+            <div class="list" onclick="subList(this.parentNode)">
+                <img src="/static/admin/base/img/logout.svg" alt="注销">
+                <a onclick="link('/logout')"><b>注销</b></a>
+            </div>
+            <ul></ul>
+        </li>
+    </ul>
+</div>
+{{ end }}

@@ -1,0 +1,88 @@
+@font-face {
+    font-family: 'custom-font';
+    src: url("/static/common/font.ttf");
+}
+
+body{
+    margin: 0;
+    color: #303030;
+    background-color: white;
+    user-select: none;
+    font-family: 'custom-font', system-ui;
+}
+#login{
+    width: 25rem;
+    height: 30rem;
+    left: 50%;
+    top: 45%;
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+    box-shadow: 0 0 0.5rem #CCCCCC;
+    border-radius: 2rem;
+}
+h2{
+    text-align: center;
+    font-size: 1.8rem;
+    margin-top: 3rem;
+}
+form{
+    width: 80%;
+    left: 10%;
+    position: relative;
+}
+label{
+    width: 100%;
+    height: 3rem;
+    margin-top: 2rem;
+    display: block;
+    position: relative;
+}
+label b{
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative;
+    display: block;
+    width: 20%;
+    float: left;
+    font-size: 1.1rem;
+}
+label input{
+    width: 80%;
+    height: 100%;
+    float: left;
+    border: none;
+    border-bottom: solid 0.2rem #303030;
+    outline: none;
+    font-family: 'custom-font', system-ui;
+    font-size: 1.1rem;
+}
+label input:focus{
+    background-color: white;
+}
+label input:-webkit-autofill{
+    background-color: transparent!important;
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+}
+button{
+    width: 100%;
+    height: 3rem;
+    margin-top: 3rem;
+    position: relative;
+    background: none;
+    border: solid 0.2rem #303030;
+    font-size: 1rem;
+    font-family: 'custom-font', system-ui;
+    cursor: pointer;
+}
+a{
+    right: 5rem;
+    bottom: 5rem;
+    position: absolute;
+    font-size: 1.2rem;
+    color: #303030;
+    text-decoration: none;
+    transition: 0.2s ease-in-out;
+}
+a:hover{
+    color: violet;
+}

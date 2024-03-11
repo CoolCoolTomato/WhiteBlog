@@ -1,0 +1,35 @@
+{{ define "admin/login.html" }}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{{.config.Site.Icon}}">
+    <link rel="stylesheet" href="/static/admin/login/css/login.css">
+    <title>登录</title>
+</head>
+<body>
+<div id="app">
+    <div id="login">
+        <h2>后台管理</h2>
+        <form method="post" action="/login">
+            <label>
+                <b>用户名</b>
+                <input type="text" name="username" autocomplete="off">
+            </label>
+            <label>
+                <b>密&#12288码</b>
+                <input type="password" name="password" autocomplete="off">
+            </label>
+            {{if .config.AuthConfig.Enable2FA}}
+            <label>
+                <b>验证码</b>
+                <input type="text" name="scode" autocomplete="off">
+            </label>
+            {{end}}
+            <button type="submit"><b>登录</b></button>
+        </form>
+    </div>
+    <a href="/">返回站点</a>
+</div>
+</body>
+</html>
+{{ end }}

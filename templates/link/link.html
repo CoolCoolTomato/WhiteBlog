@@ -1,0 +1,24 @@
+{{ define "link/link.html" }}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/link/css/link.css">
+    <link rel="shortcut icon" href="{{.config.Site.Icon}}">
+    <title>友链</title>
+</head>
+<body>
+<div id="links">
+    {{range $key,$value := .links}}
+    <div class="link">
+        <img src="{{$value.Gravatar}}" alt="">
+        <div>
+            <h2><a href="{{$value.Url}}" target="_blank">{{$value.Title}}</a></h2>
+            <p>{{$value.Description}}</p>
+        </div>
+    </div>
+    {{end}}
+</div>
+{{template "base/base.html" .}}
+</body>
+</html>
+{{end}}

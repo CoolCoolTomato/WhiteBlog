@@ -1,0 +1,87 @@
+#setting{
+    width: 90%;
+    left: 5%;
+    top: 10%;
+    position: absolute;
+    box-shadow: 0 0 0.5rem #CCCCCC;
+    border-radius: 2rem;
+}
+/**/
+.title{
+    margin-left: 5%;
+    margin-top: 5%;
+}
+.box{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
+}
+.box-item{
+    height: 2rem;
+}
+.box-item label{
+    width: 100%;
+    height: 100%;
+    margin-top: 1rem;
+    display: block;
+    position: relative;
+}
+.box-item label b{
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+    max-width: 30%;
+    float: left;
+    display: block;
+    font-size: 1.1rem;
+}
+.box-item input{
+    width: 70%;
+    height: 100%;
+    float: right;
+    border: none;
+    border-bottom: solid 0.2rem #303030;
+    outline: none;
+    font-family: 'custom-font', system-ui;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+#user{
+    width: 90%;
+    margin-left: 5%;
+}
+#login{
+    width: 90%;
+    margin-left: 5%;
+}
+#site{
+    width: 90%;
+    margin-left: 5%;
+}
+#setting button{
+    width: 20%;
+    height: 2rem;
+    margin: 5%;
+    position: relative;
+    background: none;
+    border: solid 0.2rem #303030;
+    font-size: 1rem;
+    font-family: 'custom-font', system-ui;
+    cursor: pointer;
+}
+/**/
+#page_title{
+    border-radius: 1rem;
+    left: 3%;
+    top: 5%;
+    position: absolute;
+    box-shadow: 0 0 0.5rem #CCCCCC;
+    text-align: center;
+    background-color: white;
+}
+#page_title h2{
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}

@@ -1,0 +1,96 @@
+{{ define "index/index.html" }}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/index/css/index.css">
+    <link rel="shortcut icon" href="{{.config.Site.Icon}}">
+    <script type="application/javascript" src="/static/index/js/index.js"></script>
+    <script type="application/javascript" src="/static/admin/index/js/typed.umd.js"></script>
+    <title>{{.config.User.Username}}</title>
+</head>
+<body>
+<div id="hello">
+    <div>
+        <h2>{{.config.Site.Title}}</h2>
+    </div>
+</div>
+<div id="show">
+    <div id="bars">
+        <div class="bar">
+            <div class="img" onclick="choose('home')">
+                <img src="/static/index/img/home.svg" alt="">
+            </div>
+        </div>
+        <div class="bar">
+            <div class="img" onclick="choose('code')">
+                <img src="/static/index/img/code.svg" alt="">
+            </div>
+        </div>
+        <div class="bar">
+            <div class="img" onclick="choose('contact')">
+                <img src="/static/index/img/link.svg" alt="">
+            </div>
+        </div>
+        <div class="bar">
+            <div class="img" onclick="choose('poet')">
+                <img src="/static/index/img/null.svg" alt="">
+            </div>
+        </div>
+    </div>
+    <div id="items">
+        <div id="items_warp">
+            <div class="item">
+                <div id="home">
+                    <b>人工智能</b>
+                    <b>网络安全</b>
+                    <b>后端开发</b>
+                </div>
+            </div>
+            <div class="item">
+                <div id="code">
+                    <h2>编程语言</h2>
+                    <b>Golang</b>
+                    <b>Python</b>
+                    <b>PHP</b>
+                </div>
+            </div>
+            <div class="item">
+                <div id="contact">
+                    <div class="contact">
+                        <a href="{{.config.Site.Bili}}" target="_blank"><img src="/static/index/img/bili.svg" alt="bili"></a>
+                    </div>
+                    <div class="contact">
+                        <a href="{{.config.Site.Github}}" target="_blank"><img src="/static/index/img/github.svg" alt="github"></a>
+                    </div>
+                    <div class="contact">
+                        <a href="{{.config.Site.Twitter}}" target="_blank"><img src="/static/index/img/twitter.svg" alt="twitter"></a>
+                    </div>
+                    <div class="contact">
+                        <a href="mailto:{{.config.Site.Mail}}" target="_blank"><img src="/static/index/img/mail.svg" alt="mail"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <b><span id="typeSpan"></span></b>
+                <script>
+                    var typed = new Typed('#typeSpan', {
+                        strings: [
+                            {{range $key,$value := .poets }}
+                    '{{ $value.Content }}',
+                        {{ end }}
+                    ],
+                    typeSpeed: 100,
+                        backSpeed: 50,
+                        loop: true,
+                        backDelay: 3000,
+                        shuffle: true,
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+{{template "base/base.html" .}}
+</body>
+</html>
+{{end}}

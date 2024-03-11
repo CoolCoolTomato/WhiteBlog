@@ -1,0 +1,69 @@
+{{ define "admin/article.html" }}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{{.config.Site.Icon}}">
+    <link rel="stylesheet" href="/static/admin/article/css/article.css">
+    <script type="application/javascript" src="/static/admin/article/js/article.js"></script>
+    <title>文章管理</title>
+</head>
+<body>
+<div id="app">
+    <div id="article">
+        <div id="article_tool">
+            <button onclick="link('/admin/article/add')"><b>新增</b></button>
+            <button onclick="deleteArticle()"><b>删除</b></button>
+            <b>|</b>
+            <button onclick="findArticle()"><b>查询</b></button>
+            <label>
+                <b>选择分类</b>
+                <select id="selectClass">
+                    <option value="0">所有分类</option>
+                    {{$class := .class}}
+                    {{range $key,$value := .classes}}
+                        {{if eq $value.ID $class.ID}}
+                        <option value="{{$value.ID}}" selected>{{$value.Name}}</option>
+                        {{else}}
+                        <option value="{{$value.ID}}">{{$value.Name}}</option>
+                        {{end}}
+                    {{end}}
+                </select>
+            </label>
+            <b>|</b>
+            <b><span id="article_tip">{{.tip}}</span></b>
+        </div>
+        <div id="article_table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>文章名称</th>
+                        <th>所属分类</th>
+                        <th>创建时间</th>
+                        <th>修改时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{range $key,$value := .articles}}
+                    <tr>
+                        <td>
+                            <input type="radio" name="articleId" id="r{{ $value.ID }}" value="{{ $value.ID }}">
+                            <label for="r{{ $value.ID }}">{{ $value.ID }}</label>
+                            <a href="/admin/article/edit?article={{$value.ID}}">{{$value.Title}}</a>
+                        </td>
+                        <td>{{$value.Class}}</td>
+                        <td>{{ $value.CreatedDate | formatDate }}</td>
+                        <td>{{ $value.UpdatedDate | formatDate }}</td>
+                    </tr>
+                    {{end}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="page_title">
+        <h2>文章管理</h2>
+    </div>
+</div>
+{{template "admin/base.html" .}}
+</body>
+</html>
+{{ end }}

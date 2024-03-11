@@ -1,0 +1,166 @@
+/*base*/
+#list{
+    width: 10%;
+    box-shadow: 0 0 1rem #CCCCCC;
+}
+.li{
+    width: 20rem;
+}
+.list{
+    height: 5rem;
+}
+.li img{
+    height: 3rem;
+}
+.li a{
+    left: 5rem;
+    font-size: 2rem;
+}
+.li ul li {
+    height: 4rem;
+}
+#app{
+    width: 90%;
+}
+/*index*/
+#index{
+    grid-template-rows: repeat(7, 1fr);
+}
+#welcome{
+    grid-column: 1/7;
+    grid-row: 1;
+    box-shadow: 0 0 1rem #CCCCCC;
+}
+#welcome h2{
+    top: 15%;
+    font-size: 2.5rem;
+}
+#card{
+    grid-column: 1/7;
+    grid-row: 2;
+    box-shadow: 0 0 1rem #CCCCCC;
+}
+#card span{
+    font-size: 1.8rem;
+}
+#class{
+    grid-column: 1/7;
+    grid-row: 3/5;
+    box-shadow: 0 0 1rem #CCCCCC;
+}
+#article{
+    grid-column: 1/7;
+    grid-row: 5/7;
+    box-shadow: 0 0 1rem #CCCCCC;
+}
+#poet{
+    grid-column: 1/7;
+    grid-row: 7;
+    box-shadow: 0 0 1rem #CCCCCC;
+}
+#poet span{
+    font-size: 1.7rem;
+}
+/*class*/
+#class{
+    height: 90%;
+    top: 5%;
+    box-shadow: 0 0 1rem #CCCCCC;
+}
+#class_tool{
+    border-bottom: solid 0.3rem #808080;
+}
+#page_title{
+    top: 2%;
+    box-shadow: 0 0 1rem #CCCCCC;
+}
+#page_title h2{
+    font-size: 2rem;
+}
+/*article*/
+#article{
+    height: 90%;
+    top: 5%;
+    box-shadow: 0 0 1rem #CCCCCC;
+}
+#article_tool{
+    border-bottom: solid 0.3rem #808080;
+}
+#article_msg{
+    height: 90%;
+    top: 5%;
+}
+/*poet*/
+#poet{
+    height: 90%;
+    top: 5%;
+    box-shadow: 0 0 1rem #CCCCCC;
+}
+#poet_tool{
+    border-bottom: solid 0.3rem #808080;
+}
+#form_add_warp, #form_update_warp{
+    width: 90%;
+}
+/*link*/
+#link{
+    height: 90%;
+    top: 5%;
+    box-shadow: 0 0 1rem #CCCCCC;
+}
+#link_tool{
+    border-bottom: solid 0.3rem #808080;
+}
+#links{
+    grid-template-columns:  repeat(1, 1fr);
+}
+.link{
+    width: 90%;
+    height: 22rem;
+    border: solid 0.3rem #808080;
+}
+.link img{
+    width: 10rem;
+    height: 10rem;
+}
+.link h2{
+    font-size: 2rem;
+}
+.link p{
+    font-size: 1.5rem;
+}
+.link a{
+    font-size: 1.5rem;
+}
+/*file*/
+#file_box{
+    height: 90%;
+    top: 5%;
+    box-shadow: 0 0 1rem #CCCCCC;
+}
+#image_tool, #file_tool{
+    border-bottom: solid 0.3rem #808080;
+}
+/*setting*/
+#setting{
+    top: 5%;
+}
+.box{
+    grid-template-columns: repeat(1, 1fr);
+}
+.title{
+    margin-left: 5%;
+    margin-top: 10%;
+    font-size: 2rem;
+}
+.box-item input{
+    border-bottom: solid 0.3rem #303030;
+}
+.box-item label b{
+    font-size: 1.5rem;
+}
+#setting button{
+    width: 30%;
+    height: 3rem;
+    font-size: 2rem;
+}

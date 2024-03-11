@@ -1,0 +1,60 @@
+{{ define "article/index.html" }}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/article/css/index.css">
+    <script type="application/javascript" src="/static/article/js/index.js"></script>
+    <link rel="shortcut icon" href="{{.config.Site.Icon}}">
+    <title>文章</title>
+</head>
+<body>
+<div id="articles">
+    <div id="articles_class">
+        {{if .class }}
+        <h2>分类 {{.class}} 下的文章 / {{len .articles}}篇</h2>
+        {{else}}
+        <h2>所有文章 / {{len .articles}}篇</h2>
+        {{end}}
+    </div>
+    {{range $key,$value := .articles}}
+    <div class="article">
+        <h2><a href="/article/{{$value.ID}}">{{$value.Title}}</a></h2>
+        <div>
+            <span><b>分类：</b>{{$value.Class}}</span>
+            <span><b>创建时间：</b>{{ $value.CreatedDate | formatDate }}</span>
+        </div>
+    </div>
+    {{end}}
+    <br>
+</div>
+<div id="catalog" class="catalog_close">
+    <ul id="classes">
+        <li class="class_li">
+            <div>
+                <a href="/article"><b>所有文章</b></a>
+            </div>
+        </li>
+        {{range $key,$value := .classes}}
+        <li class="class_li hide">
+            <div onclick="ListClass(this.parentNode)">
+                <a href="/article?class={{$value.ID}}"><b>{{$value.Name}}</b></a>
+                <img src="/static/article/img/arrow.svg">
+            </div>
+            <ul class="sub_class_ul">
+                {{range $subKey,$subValue := $value.Subclasses}}
+                <li class="sub_class_li">
+                    <div>
+                        <a href="/article?class={{$subValue.ID}}">{{$subValue.Name}}</a>
+                    </div>
+                </li>
+                {{end}}
+            </ul>
+        </li>
+        {{ end }}
+    </ul>
+    <div id="drawer" onclick="drawer()"></div>
+</div>
+{{template "base/base.html" .}}
+</body>
+</html>
+{{end}}

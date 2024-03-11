@@ -1,0 +1,122 @@
+{{ define "admin/setting.html" }}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{{.config.Site.Icon}}">
+    <link rel="stylesheet" href="/static/admin/setting/css/setting.css">
+    <script type="application/javascript" src="/static/admin/setting/js/setting.js"></script>
+    <title>设置</title>
+</head>
+<body>
+<div id="app">
+    <div id="setting">
+        <!--用户设置-->
+        <div>
+            <h2 class="title">用户信息</h2>
+            <div id="user" class="box">
+                <div class="box-item">
+                    <label>
+                        <b>用户名</b>
+                        <input type="text" value="{{.config.User.Username}}" name="user" autocomplete="off">
+                    </label>
+                </div>
+                <div class="box-item">
+                    <label>
+                        <b>头图地址</b>
+                        <input type="text" value="{{.config.User.Gravatar}}" name="gravatar" autocomplete="off">
+                    </label>
+                </div>
+                <div class="box-item">
+                    <label>
+                        <b>站点链接</b>
+                        <input type="text" value="{{.config.User.Url}}" name="url" autocomplete="off">
+                    </label>
+                </div>
+                <div class="box-item">
+                    <label>
+                        <b>站点描述</b>
+                        <input type="text" value="{{.config.User.Description}}" name="description" autocomplete="off">
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2 class="title">登录信息</h2>
+            <div id="login" class="box">
+                <div class="box-item">
+                    <label>
+                        <b>用户名</b>
+                        <input type="text" value="{{.config.AuthConfig.Username}}" name="username" autocomplete="off">
+                    </label>
+                </div>
+                <div class="box-item">
+                    <label>
+                        <b>用户密码</b>
+                        <input type="text" value="{{.config.AuthConfig.Password}}" name="password" autocomplete="off">
+                    </label>
+                </div>
+                <div class="box-item">
+                    <label>
+                        <b>2fa密钥</b>
+                        <input type="text" value="{{.key}}" disabled style="cursor: text">
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2 class="title">站点信息</h2>
+            <div id="site" class="box">
+                <div class="box-item">
+                    <label>
+                        <b>站点地址</b>
+                        <input type="text" value="{{.config.Site.Path}}" name="path" autocomplete="off">
+                    </label>
+                </div>
+                <div class="box-item">
+                    <label>
+                        <b>站点标题</b>
+                        <input type="text" value="{{.config.Site.Title}}" name="title" autocomplete="off">
+                    </label>
+                </div>
+                <div class="box-item">
+                    <label>
+                        <b>站点图标</b>
+                        <input type="text" value="{{.config.Site.Icon}}" name="icon" autocomplete="off">
+                    </label>
+                </div>
+                <div class="box-item">
+                    <label>
+                        <b>BiliBili</b>
+                        <input type="text" value="{{.config.Site.Bili}}" name="bili" autocomplete="off">
+                    </label>
+                </div>
+                <div class="box-item">
+                    <label>
+                        <b>Github</b>
+                        <input type="text" value="{{.config.Site.Github}}" name="github" autocomplete="off">
+                    </label>
+                </div>
+                <div class="box-item">
+                    <label>
+                        <b>Twitter</b>
+                        <input type="text" value="{{.config.Site.Twitter}}" name="twitter" autocomplete="off">
+                    </label>
+                </div>
+                <div class="box-item">
+                    <label>
+                        <b>Mail</b>
+                        <input type="text" value="{{.config.Site.Mail}}" name="mail" autocomplete="off">
+                    </label>
+                </div>
+            </div>
+        </div>
+        <button onclick="changeConfig()">提交</button>
+    </div>
+    <div id="page_title">
+        <h2>设置</h2>
+    </div>
+</div>
+{{template "admin/base.html" .}}
+</body>
+</html>
+{{ end }}

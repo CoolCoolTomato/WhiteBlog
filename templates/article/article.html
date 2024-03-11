@@ -1,0 +1,43 @@
+{{ define "article/article.html" }}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/article/css/article.css">
+    <link rel="stylesheet" href="/static/editor/css/editormd.preview.css">
+    <link rel="stylesheet" href="/static/editor/custom/custom.css">
+    <script type="application/javascript" src="/static/editor/js/jquery.min.js"></script>
+    <script type="application/javascript" src="/static/editor/lib/marked.min.js"></script>
+    <script type="application/javascript" src="/static/editor/lib/prettify.min.js"></script>
+    <script type="application/javascript" src="/static/editor/lib/raphael.min.js"></script>
+    <script type="application/javascript" src="/static/editor/lib/underscore.min.js"></script>
+    <script type="application/javascript" src="/static/editor/lib/sequence-diagram.min.js"></script>
+    <script type="application/javascript" src="/static/editor/lib/flowchart.min.js"></script>
+    <script type="application/javascript" src="/static/editor/lib/jquery.flowchart.min.js"></script>
+    <script type="application/javascript" src="/static/editor/lib/marked.min.js"></script>
+    <script type="application/javascript" src="/static/editor/editormd.js"></script>
+    <link rel="shortcut icon" href="{{.config.Site.Icon}}">
+    <title>{{.article.Title}}</title>
+</head>
+<body>
+<div id="article">
+    <h2 id="title">{{.article.Title}}</h2>
+    <div id="content">
+        <textarea style="display:none;">{{.article.Content}}</textarea>
+    </div>
+    <div id="toc">
+        <h2></h2>
+        <ul></ul>
+    </div>
+    <div id="time">
+        <span>创建时间：{{ .article.CreatedDate | formatDate }}</span>
+        <b>|</b>
+        <span>最后修改：{{ .article.UpdatedDate | formatDate }}</span>
+        <b>|</b>
+        <span>©允许规范转载</span>
+    </div>
+</div>
+<script type="application/javascript" src="/static/article/js/article.js"></script>
+{{template "base/base.html" .}}
+</body>
+</html>
+{{end}}

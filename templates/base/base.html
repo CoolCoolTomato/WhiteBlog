@@ -1,0 +1,19 @@
+{{ define "base/base.html" }}
+<link rel="stylesheet" href="/static/base/css/base.css">
+<link id="mobile" rel="stylesheet" href="">
+<script type="application/javascript" src="/static/base/js/base.js"></script>
+<div id="navigation">
+    <h2>{{.config.User.Username}}</h2>
+    <div id="list">
+        <div>
+            <a href="/"><b>首页</b></a>
+        </div>
+        <div>
+            <a href="/article"><b>文章</b></a>
+        </div>
+        <div>
+            <a href="/link"><b>友链</b></a>
+        </div>
+    </div>
+</div>
+{{end}}

@@ -1,0 +1,104 @@
+{{ define "admin/file.html" }}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/admin/file/css/file.css">
+    <script type="application/javascript" src="/static/admin/file/js/file.js"></script>
+    <link rel="shortcut icon" href="{{.config.Site.Icon}}">
+    <title>文件管理</title>
+</head>
+<body>
+<div id="app">
+    <div id="file_box">
+        <div id="switch">
+            <div id="image">
+                <div id="image_tool">
+                    <button onclick="switch2Image()"><b>文章图片管理</b></button>
+                    <button onclick="switch2File()"><b>其它文件管理</b></button>
+                    <button onclick="delImage()"><b>删除</b></button>
+                    <b><span id="image_tip">{{.tip}}</span></b>
+                </div>
+                <div id="image_table">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>图片名称</th>
+                            <th>图片路径</th>
+                            <th>所属文章</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{range $key,$value := .images}}
+                        <tr>
+                            <td>
+                                <input type="radio" name="imageId" id="i{{$value.ID}}" value="{{$value.ID}}">
+                                <label for="i{{$value.ID}}">{{$value.ID}}</label>
+                                <span>{{$value.FileName}}</span>
+                            </td>
+                            <td>{{$value.FilePath}}</td>
+                            <td>{{$value.ArticleTitle}}</td>
+                        </tr>
+                        {{end}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="file">
+                <div id="file_tool">
+                    <button onclick="switch2Image()"><b>文章图片管理</b></button>
+                    <button onclick="switch2File()"><b>其它文件管理</b></button>
+                    <b>|</b>
+                    <div id="file_choose">
+                        <label for="upload_input" id="upload_input_warp">
+                            <input type="file" id="upload_input">
+                            <b>选择文件</b>
+                            <span id="upload_span"></span>
+                        </label>
+                        <script>
+                            let upload_input = document.getElementById('upload_input')
+                            let upload_span = document.getElementById('upload_span')
+
+                            upload_input.addEventListener('change', function (){
+                                let file = upload_input.files[0]
+                                upload_span.textContent = file.name
+                            })
+                        </script>
+                    </div>
+                    <button onclick="uploadFile()"><b>上传</b></button>
+                    <b>|</b>
+                    <button onclick="delFile()"><b>删除</b></button>
+                    <b><span id="file_tip">{{.tip}}</span></b>
+                </div>
+                <div id="file_table">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>文件名称</th>
+                            <th>文件路径</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{range $key,$value := .files}}
+                        <tr>
+                            <td>
+                                <input type="radio" name="fileId" id="f{{$value.ID}}" value="{{$value.ID}}">
+                                <label for="f{{$value.ID}}">{{$value.ID}}</label>
+                                <span>{{$value.FileName}}</span>
+                            </td>
+                            <td>{{$value.FilePath}}</td>
+                        </tr>
+                        {{end}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="page_title">
+        <h2>文件管理</h2>
+    </div>
+</div>
+{{template "admin/base.html" .}}
+</body>
+</html>
+{{end}}

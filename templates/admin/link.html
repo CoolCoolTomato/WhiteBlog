@@ -1,0 +1,98 @@
+{{ define "admin/link.html" }}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{{.config.Site.Icon}}">
+    <link rel="stylesheet" href="/static/admin/link/css/link.css">
+    <script type="application/javascript" src="/static/admin/link/js/link.js"></script>
+    <title>友链管理</title>
+</head>
+<body>
+<div id="app">
+    <div id="link">
+        <div id="link_tool">
+            <button onclick="showAddForm()"><b>新增</b></button>
+            <button onclick="showUpdateForm()"><b>编辑</b></button>
+            <button onclick="deleteLink()"><b>删除</b></button>
+            <b><span id="link_tip">{{.tip}}</span></b>
+        </div>
+        <div id="links">
+            {{range $key,$value := .links}}
+            <div class="link" onclick="checkLink(this)">
+                <input type="radio" name="linkId" id="r{{ $value.ID }}" value="{{ $value.ID }}">
+                <img src="{{$value.Gravatar}}" alt="">
+                <h2>{{$value.Title}}</h2>
+                <p>{{$value.Description}}</p>
+                <a href="{{$value.Url}}" target="_blank">前往友链</a>
+                <span style="display: none">{{$value.Email}}</span>
+            </div>
+            {{end}}
+        </div>
+    </div>
+    <div id="page_title">
+        <h2>友链管理</h2>
+    </div>
+    <div id="link_add_form">
+        <div id="form_add_warp">
+            <h2>新增友链</h2>
+            <form action="/admin/link/add" method="post" id="link_add">
+                <label>
+                    <b>友链标题</b>
+                    <input type="text" name="ltitle" autocomplete="off">
+                </label>
+                <label>
+                    <b>头图地址</b>
+                    <input type="text" name="lgravatar" autocomplete="off">
+                </label>
+                <label>
+                    <b>友链描述</b>
+                    <input type="text" name="ldescription" autocomplete="off">
+                </label>
+                <label>
+                    <b>友链地址</b>
+                    <input type="text" name="llink" autocomplete="off">
+                </label>
+                <label>
+                    <b>友链邮箱</b>
+                    <input type="text" name="lmail" autocomplete="off">
+                </label>
+                <button type="button" onclick="addLink()">提交</button>
+                <button type="button" onclick="hideAddForm()">关闭</button>
+            </form>
+        </div>
+    </div>
+    <div id="link_update_form">
+        <div id="form_update_warp">
+            <h2>编辑友链</h2>
+            <form action="/admin/link/update" method="post" id="link_update">
+                <input type="hidden" name="lid">
+                <label>
+                    <b>友链标题</b>
+                    <input type="text" name="ltitle" autocomplete="off">
+                </label>
+                <label>
+                    <b>头图地址</b>
+                    <input type="text" name="lgravatar" autocomplete="off">
+                </label>
+                <label>
+                    <b>友链描述</b>
+                    <input type="text" name="ldescription" autocomplete="off">
+                </label>
+                <label>
+                    <b>友链地址</b>
+                    <input type="text" name="llink" autocomplete="off">
+                </label>
+                <label>
+                    <b>友链邮箱</b>
+                    <input type="text" name="lmail" autocomplete="off">
+                </label>
+                <button type="button" onclick="updateLink()">提交</button>
+                <button type="button" onclick="hideUpdateForm()">关闭</button>
+            </form>
+        </div>
+    </div>
+</div>
+{{template "admin/base.html" .}}
+</body>
+</html>
+{{ end }}
