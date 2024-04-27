@@ -1,5 +1,5 @@
 ## 快速开始
-在启动之前，请确保填写好config.json配置文件：
+在启动之前，请确保填写好*config.json*配置文件：
 ```json
 {
     "authConfig": {
